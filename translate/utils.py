@@ -215,6 +215,7 @@ def get_filenames(data_dir, model_dir, extensions, train_prefix, dev_prefix, voc
             shutil.copy(src, dest)
 
     exts = list(extensions)
+    print(exts)
     if decode is not None:  # empty list means we decode from standard input
         test = decode
         exts.pop(-1)

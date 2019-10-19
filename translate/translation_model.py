@@ -236,7 +236,6 @@ class TranslationModel:
 
     def decode(self, output=None, remove_unk=False, raw_output=False, max_test_size=None, **kwargs):
         utils.log('starting decoding')
-
         # empty `test` means that we read from standard input, which is not possible with multiple encoders
         # assert len(self.src_ext) == 1 or self.filenames.test
         # check that there is the right number of files for decoding
@@ -247,10 +246,9 @@ class TranslationModel:
             output_file = sys.stdout if output is None else open(output, 'w')
             paths = self.filenames.test or [None]
             lines = utils.read_lines(paths, binary=self.binary)
-
             if max_test_size:
                 lines = itertools.islice(lines, max_test_size)
-
+            print(self.filenames.test)
             if not self.filenames.test:  # interactive mode
                 batch_size = 1
             else:
